@@ -1,0 +1,47 @@
+﻿@model ProjetoKeener.Models.ProdutoViewModel
+
+@{
+    ViewData["Title"] = "Detalhe do Produto - " + Model.Nome;
+}
+
+<h4 style="padding-top: 50px">@ViewData["Title"]</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <img src="~/imagens/@Model.Imagem" alt="@Model.Imagem" style="width: 200px; height: 328px" />
+    </div>
+
+    <div class="col-md-8">
+        <dl class="dl">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Obs)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Obs)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Preco)
+            </dt>
+            <dd>
+                @Model.Preco.ToString("C")
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Disponivel)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Disponivel)
+            </dd> 
+        </dl>
+
+        <div class="form-group">
+            <a class="btn btn-warning" sp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+            <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
+        </div>
+    </div>
+</div>

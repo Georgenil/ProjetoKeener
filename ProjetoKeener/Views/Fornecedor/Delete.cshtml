@@ -1,0 +1,36 @@
+﻿@model ProjetoKeener.Models.FornecedorViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Tem certeza que quer Excluir esse fornecedor?</h1>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoFornecedor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TipoFornecedor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ativo)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input class="btn btn-danger" type="submit" value="Excluir">
+        <a class="btn btn-info" asp-action="Index">Voltar</a>
+    </form>
+</div>

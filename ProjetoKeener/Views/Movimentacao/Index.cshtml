@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ProjetoKeener.Models.MovimentacaoViewModel>
+
+@{
+    ViewData["Title"] = "Movimentações";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+<p>
+    <a class="btn btn-info" asp-action="Create">Nova Movimentação</a>
+</p>
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Produto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoMovimentacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoMovimentacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
