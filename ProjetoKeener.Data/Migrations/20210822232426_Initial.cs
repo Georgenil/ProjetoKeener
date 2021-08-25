@@ -62,21 +62,6 @@ namespace ProjetoKeener.Dados.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Movimentacoes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    tipoMovimentacao = table.Column<int>(type: "int", nullable: false),
-                    Quantidade = table.Column<int>(type: "int", nullable: false),
-                    Data = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Movimentacoes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Usuarios",
                 columns: table => new
                 {
@@ -209,8 +194,7 @@ namespace ProjetoKeener.Dados.Migrations
                     Imagem = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Preco = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Disponivel = table.Column<bool>(type: "bit", nullable: false),
-                    FornecedorId = table.Column<int>(type: "int", nullable: true),
-                    MovimentacaoId = table.Column<int>(type: "int", nullable: true)
+                    FornecedorId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -221,10 +205,27 @@ namespace ProjetoKeener.Dados.Migrations
                         principalTable: "Fornecedores",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Movimentacoes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdProduto = table.Column<int>(type: "int", nullable: false),
+                    tipoMovimentacao = table.Column<int>(type: "int", nullable: false),
+                    Quantidade = table.Column<int>(type: "int", nullable: false),
+                    Data = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ProdutoId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Movimentacoes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Produtos_Movimentacoes_MovimentacaoId",
-                        column: x => x.MovimentacaoId,
-                        principalTable: "Movimentacoes",
+                        name: "FK_Movimentacoes_Produtos_ProdutoId",
+                        column: x => x.ProdutoId,
+                        principalTable: "Produtos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -269,14 +270,14 @@ namespace ProjetoKeener.Dados.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Movimentacoes_ProdutoId",
+                table: "Movimentacoes",
+                column: "ProdutoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Produtos_FornecedorId",
                 table: "Produtos",
                 column: "FornecedorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Produtos_MovimentacaoId",
-                table: "Produtos",
-                column: "MovimentacaoId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -297,7 +298,7 @@ namespace ProjetoKeener.Dados.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Produtos");
+                name: "Movimentacoes");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");
@@ -309,10 +310,10 @@ namespace ProjetoKeener.Dados.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Fornecedores");
+                name: "Produtos");
 
             migrationBuilder.DropTable(
-                name: "Movimentacoes");
+                name: "Fornecedores");
         }
     }
 }

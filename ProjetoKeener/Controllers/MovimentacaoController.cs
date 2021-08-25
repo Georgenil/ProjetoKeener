@@ -50,10 +50,10 @@ namespace ProjetoKeener.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(MovimentacaoViewModel movimentacaoViewModel)
         {
-            movimentacaoViewModel = PopularProdutos(movimentacaoViewModel);
-            movimentacaoViewModel.Data = DateTime.Now ;
-            if (!ModelState.IsValid) return View(movimentacaoViewModel);
+            //movimentacaoViewModel = PopularProdutos(movimentacaoViewModel);
 
+            if (!ModelState.IsValid) return View(movimentacaoViewModel);
+            movimentacaoViewModel.Data = DateTime.Now;
             _movimentacaoRepositorio.Adicionar(_mapper.Map<Movimentacao>(movimentacaoViewModel));
 
             return RedirectToAction("Index");
@@ -99,7 +99,7 @@ namespace ProjetoKeener.Controllers
         }
         private MovimentacaoViewModel PopularProdutos(MovimentacaoViewModel movimentacao)
         {
-            movimentacao.Produtos = (IEnumerable<ProdutoViewModel>)_mapper.Map<IEnumerable<MovimentacaoViewModel>>(_movimentacaoRepositorio.BuscarTodos());
+            movimentacao.Produtos = _mapper.Map<IEnumerable<ProdutoViewModel>>(_produtoRepositorio.BuscarTodos());
 
             return movimentacao;
         }

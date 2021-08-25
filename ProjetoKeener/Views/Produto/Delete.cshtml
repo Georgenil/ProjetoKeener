@@ -1,55 +1,57 @@
 ﻿@model ProjetoKeener.Models.ProdutoViewModel
 
 @{
-    ViewData["Title"] = "Excluir" + Model.Nome;
+    ViewData["Title"] = "Deseja excluir " + Model.Nome + "?";
 }
 
-<h4 style="padding-top: 50px">@ViewData["Title"] </h4>
+<h1 style="padding-top: 50px">@ViewData["Title"] </h1>
 
 <h5>Você tem certeza disso?</h5>
-
+<hr />
 <div class="row">
     <div>
         <img src="~/imagens/@Model.Imagem" alt="@Model.Imagem" style="width: 200px; height: 328px" />
-   </div>
+    </div>
 
-    <dl class="d-lg-inline">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Obs)
-        </dt>----------------------------------------------------------------------------------------------------------
-        <dd>
-            @Html.DisplayFor(model => model.Obs)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Imagem)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Imagem)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Preco)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Preco)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Disponivel)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Disponivel)
-        </dd>
-    </dl>
+    <div class="col-md-8">
+        <dl class="dl">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Obs)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Obs)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Imagem)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Imagem)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Preco)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Preco)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Disponivel)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Disponivel)
+            </dd>
+        </dl>
 
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input class="btn btn-danger" type="submit" value="Delete"  /> |
-        <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
-    </form>
-    
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input class="btn btn-danger" type="submit" value="Delete" /> |
+            <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
+        </form>
+
+    </div>
 </div>

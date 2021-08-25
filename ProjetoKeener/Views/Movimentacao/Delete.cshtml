@@ -1,0 +1,36 @@
+﻿@model ProjetoKeener.Models.MovimentacaoViewModel
+
+@{
+    ViewData["Title"] = "Deseja excluir essa movimentação?";
+}
+
+<h1 style="padding-top: 50px">@ViewData["Title"] </h1>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Produto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Produto.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Quantidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input class="btn btn-danger" type="submit" value="Excluir">
+        <a class="btn btn-info" asp-action="Index">Voltar</a>
+    </form>
+</div>

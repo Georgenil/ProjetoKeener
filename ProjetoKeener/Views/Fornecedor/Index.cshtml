@@ -32,7 +32,15 @@
                     @Html.DisplayFor(modelItem => item.Nome)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TipoFornecedor)
+                    @if (item.TipoFornecedor == ProjetoKeener.Entidades.Tipos.EnumFornecedor.PessoaFisica)
+                    {
+                        item.Tipo = "Pessoa Física";
+                    }
+                    else
+                    {
+                        item.Tipo = "Pessoa Jurídica";
+                    }
+                    @Html.DisplayFor(modelItem => item.Tipo)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Ativo)

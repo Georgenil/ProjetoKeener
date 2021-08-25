@@ -246,6 +246,12 @@ namespace ProjetoKeener.Dados.Migrations
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("IdProduto")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProdutoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Quantidade")
                         .HasColumnType("int");
 
@@ -253,6 +259,8 @@ namespace ProjetoKeener.Dados.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProdutoId");
 
                     b.ToTable("Movimentacoes");
                 });
@@ -279,9 +287,6 @@ namespace ProjetoKeener.Dados.Migrations
                     b.Property<string>("Imagem")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("MovimentacaoId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
 
@@ -294,8 +299,6 @@ namespace ProjetoKeener.Dados.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("FornecedorId");
-
-                    b.HasIndex("MovimentacaoId");
 
                     b.ToTable("Produtos");
                 });
@@ -369,19 +372,22 @@ namespace ProjetoKeener.Dados.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ProjetoKeener.Entidades.Movimentacao", b =>
+                {
+                    b.HasOne("ProjetoKeener.Entidades.Produto", "Produto")
+                        .WithMany("Movimentacoes")
+                        .HasForeignKey("ProdutoId");
+
+                    b.Navigation("Produto");
+                });
+
             modelBuilder.Entity("ProjetoKeener.Entidades.Produto", b =>
                 {
                     b.HasOne("ProjetoKeener.Entidades.Fornecedor", "Fornecedor")
                         .WithMany("Produtos")
                         .HasForeignKey("FornecedorId");
 
-                    b.HasOne("ProjetoKeener.Entidades.Movimentacao", "Movimentacao")
-                        .WithMany("Produtos")
-                        .HasForeignKey("MovimentacaoId");
-
                     b.Navigation("Fornecedor");
-
-                    b.Navigation("Movimentacao");
                 });
 
             modelBuilder.Entity("ProjetoKeener.Entidades.Fornecedor", b =>
@@ -389,9 +395,9 @@ namespace ProjetoKeener.Dados.Migrations
                     b.Navigation("Produtos");
                 });
 
-            modelBuilder.Entity("ProjetoKeener.Entidades.Movimentacao", b =>
+            modelBuilder.Entity("ProjetoKeener.Entidades.Produto", b =>
                 {
-                    b.Navigation("Produtos");
+                    b.Navigation("Movimentacoes");
                 });
 #pragma warning restore 612, 618
         }

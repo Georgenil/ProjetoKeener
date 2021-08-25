@@ -23,4 +23,8 @@
     <ProjectReference Include="..\ProjetoKeener.Entidades\ProjetoKeener.Entidades.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

@@ -40,6 +40,9 @@
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
+                @item.Obs.ToLower();
+            </td>
+            <td>
                 @item.Preco.ToString("C")
             </td>
             <td>
