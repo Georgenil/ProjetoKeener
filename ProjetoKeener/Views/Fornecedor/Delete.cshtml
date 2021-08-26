@@ -1,7 +1,7 @@
 ﻿@model ProjetoKeener.Models.FornecedorViewModel
 
 @{
-    ViewData["Title"] = "Deseja excluir  " + Model.Nome + "?";
+    ViewData["Title"] = "Deseja excluir o fornecedor " + Model.Nome + "?";
 }
 
 <h1 style="padding-top: 50px">@ViewData["Title"] </h1>
@@ -19,7 +19,15 @@
             @Html.DisplayNameFor(model => model.TipoFornecedor)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.TipoFornecedor)
+            @if (Model.TipoFornecedor == ProjetoKeener.Entidades.Tipos.EnumFornecedor.PessoaFisica)
+            {
+                Model.Tipo = "Pessoa Física";
+            }
+            else
+            {
+                Model.Tipo = "Pessoa Jurídica";
+            }
+            @Html.DisplayFor(model => model.Tipo)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Ativo)

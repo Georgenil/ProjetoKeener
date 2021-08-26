@@ -13,7 +13,7 @@ namespace ProjetoKeener.Models
 
         [Display(Name = "Login")]
         [Required(ErrorMessage = "Informe o nome do usuário", AllowEmptyStrings = false)]
-        public string NomeUsuario { get; set; }
+        public string Login { get; set; }
 
         [Required(ErrorMessage = "Informe a senha do usuário", AllowEmptyStrings = false)]
         [DataType(System.ComponentModel.DataAnnotations.DataType.Password)]

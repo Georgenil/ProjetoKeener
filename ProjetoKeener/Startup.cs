@@ -53,6 +53,7 @@ namespace ProjetoKeener
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
             services.AddScoped<IFornecedorRepositorio, FornecedorRepositorio>();
             services.AddScoped<IMovimentacaoRepositorio, MovimentacaoRepositorio>();
+            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             services.AddSingleton<IValidationAttributeAdapterProvider, MoedaValidationAttributeAdapterProvider>();
         }
 

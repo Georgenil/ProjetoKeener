@@ -16,7 +16,8 @@ namespace ProjetoKeener.Dados.Mappings
             builder.HasKey(f => f.Id);
 
             // 1 : N => Produto : Movimentações
-            builder.HasOne(x => x.Produto).WithMany(x => x.Movimentacoes);
+            builder.HasOne(x => x.Produto).WithMany(x => x.Movimentacoes);//Outra forma de dizer ao EF que essa é a chave estrageira
+                                                                          //.HasForeignKey(mov=>mov.ProdutoId)
             //builder.HasMany(m => m.Produtos)
             //    .WithOne(p => p.Movimentacao)
             //    .HasForeignKey(p => p.IdMovimentacao);

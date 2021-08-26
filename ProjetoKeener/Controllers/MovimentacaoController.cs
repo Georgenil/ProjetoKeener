@@ -54,6 +54,8 @@ namespace ProjetoKeener.Controllers
 
             if (!ModelState.IsValid) return View(movimentacaoViewModel);
             movimentacaoViewModel.Data = DateTime.Now;
+
+
             _movimentacaoRepositorio.Adicionar(_mapper.Map<Movimentacao>(movimentacaoViewModel));
 
             return RedirectToAction("Index");

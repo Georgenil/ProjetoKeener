@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoKeener.Dados.Repositorios.Imp
 {
-    public class UsuarioRepositorio : IRepositorio<Usuario>
+    public class UsuarioRepositorio : IUsuarioRepositorio
     {
         public int Adicionar(Usuario t)
         {

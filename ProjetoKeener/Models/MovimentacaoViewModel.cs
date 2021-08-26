@@ -13,7 +13,7 @@ namespace ProjetoKeener.Models
         public int Id { get; set; }
 
         [DisplayName("Produto")]
-        public int IdProduto { get; set; }
+        public int ProdutoId { get; set; }
         public DateTime Data { get; set; }
 
         [DisplayName("Tipo de Movimentação")]

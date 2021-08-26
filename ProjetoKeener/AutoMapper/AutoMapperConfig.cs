@@ -15,6 +15,7 @@ namespace ProjetoKeener.Automapper
             CreateMap<Fornecedor, FornecedorViewModel>().ReverseMap();
             CreateMap<Produto, ProdutoViewModel>().ReverseMap();
             CreateMap<Movimentacao, MovimentacaoViewModel>().ReverseMap();
+            CreateMap<Usuario, UsuarioViewModel>().ReverseMap();
         }
     }
 }
